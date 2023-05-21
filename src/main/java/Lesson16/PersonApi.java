@@ -8,6 +8,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class PersonApi {
@@ -40,10 +41,14 @@ public class PersonApi {
 
         res.setUsername(object.getJSONObject("login").getString("username"));
         res.setPassword(object.getJSONObject("login").getString("password"));
-        res.setDob(LocalDateTime.parse(object.getJSONObject("dob").getString("date")));
-        
-         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-         LocalDateTime dateTime = LocalDateTime.parse("date", format);
+        //res.setDob(LocalDateTime.parse(object.getJSONObject("dob").getString("date")));
+
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse(object.getJSONObject("dob").getString("date"));
+        System.out.println(zonedDateTime);
+        res.setDob(zonedDateTime.toLocalDateTime());
+
+        // DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+         //LocalDateTime dateTime = LocalDateTime.parse("date", format);
 
 //дополнить остальные поля.. поле с датой загуглить/ из стринга перевести в дату и вывести
         return res;
