@@ -1,0 +1,24 @@
+package Lesson17;
+
+public class Main {
+    public static void main(String[] args) {
+
+        MyThread thread = new MyThread();
+        //thread.start();
+
+        thread.setDaemon(true);
+        //Thread thread = new Thread(new MyThread());
+        thread.start();
+
+
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i + " " + Thread.currentThread().getName());
+            try {
+                Thread.sleep(250);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
