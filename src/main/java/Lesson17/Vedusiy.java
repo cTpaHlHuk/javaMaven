@@ -28,5 +28,6 @@ public class Vedusiy {
             }
         }
         System.out.println("Концерт закончился");
+        LOGGER.debug("Ведущий закончил концерт");
     }
 }

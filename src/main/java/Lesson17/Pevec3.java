@@ -6,7 +6,6 @@ public class Pevec3 extends Thread {
     @Override
     public void run() {
         while (true) {
-            LOGGER.debug("Певец 3 начал петь");
             synchronized (Monitors.MIKROFON) {
                 try {
                     Monitors.MIKROFON.wait();
@@ -15,6 +14,7 @@ public class Pevec3 extends Thread {
                 }
             }
             for (int i = 0; i < 3; i++) {
+                LOGGER.debug("Певец 3 начал петь");
                 System.out.println("_Da__Da__Da_");
                 try {
                     Thread.sleep(500);
@@ -22,8 +22,8 @@ public class Pevec3 extends Thread {
                     e.printStackTrace();
                 }
             }
+            LOGGER.debug("Певец 3 передал микрофон");
             synchronized (Monitors.MIKROFON) {
-                LOGGER.debug("Певец 3 передал микрофон");
                 Monitors.MIKROFON.notify();
             }
         }

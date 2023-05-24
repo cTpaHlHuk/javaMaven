@@ -17,9 +17,10 @@ public class Pevec1 extends Thread {
     @Override
     public void run() {
         int j = 0;
+
         while (j < count) {
-            LOGGER.debug("Певец 1 начал петь");
             for (int i = 0; i < 3; i++) {
+                LOGGER.debug("Певец 1 начал петь");
                 System.out.println("La-La-La______");
                 try {
                     Thread.sleep(200);
@@ -27,12 +28,12 @@ public class Pevec1 extends Thread {
                     e.printStackTrace();
                 }
             }
+            LOGGER.debug("Певец 1 передал микрофон");
+            LOGGER.debug("Певец ждет");
             synchronized (Monitors.MIKROFON) {
-                LOGGER.debug("Певец 1 передал микрофон");
                 Monitors.MIKROFON.notify();
             }
             synchronized (Monitors.MIKROFON) {
-                LOGGER.debug("Певец ждет");
                 try {
                     Monitors.MIKROFON.wait();
                 } catch (Exception e) {
