@@ -23,6 +23,7 @@ public class Pevec2 extends Thread {
                 }
             }
             LOGGER.debug("Певец 2 передал микрофон");
+            LOGGER.debug("Певец 2 ждет");
             synchronized (Monitors.MIKROFON) {
                 Monitors.MIKROFON.notify();
             }
