@@ -15,7 +15,7 @@ public class PersonApi {
     public static Person getPersonFromApi() {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://randomuser.me/api"))
+                .uri(URI.create("https://randomuser.me/api"))
                 .GET().build();
 
         try {
