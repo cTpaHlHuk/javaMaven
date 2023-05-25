@@ -13,6 +13,7 @@ public class Vedusiy {
         System.out.println("Концерт начался");
         Pevec1 pevec1 = new Pevec1(2);
         Pevec2 pevec2 = new Pevec2();
+        pevec2.setDaemon(true);
         Pevec3 pevec3 = new Pevec3();
         pevec3.setDaemon(true);
 
